@@ -27,30 +27,4 @@ echo "Copying shared object file to /usr/lib/..."
 
 sudo cp $TARGET_DIR/libUUGear.so /usr/lib/
 
-echo "Building examples in C..."
-
-EXAMPLE_DIR=$CURRENT_DIR/example/c
-
-cd $EXAMPLE_DIR
-
-cc -L$TARGET_DIR -Wall DigitalReadWrite.c -o $TARGET_DIR/DigitalReadWrite -lUUGear -lrt
-
-cc -L$TARGET_DIR -Wall AnalogWrite.c -o $TARGET_DIR/AnalogWrite -lUUGear -lrt
-
-cc -L$TARGET_DIR -Wall VoltageMeasurement.c -o $TARGET_DIR/VoltageMeasurement -lUUGear -lrt
-
-cc -L$TARGET_DIR -Wall ReadSpeed.c -o $TARGET_DIR/ReadSpeed -lUUGear -lrt
-
-cc -L$TARGET_DIR -Wall ReadDHT.c -o $TARGET_DIR/ReadDHT -lUUGear -lrt
-
-cc -L$TARGET_DIR -Wall ReadSR04.c -o $TARGET_DIR/ReadSR04 -lUUGear -lrt
-
-cc -L$TARGET_DIR -Wall ControlServo.c -o $TARGET_DIR/ControlServo -lUUGear -lrt
-
-cd $CURRENT_DIR
-
-echo "Copying examples in Python..."
-
-cp $CURRENT_DIR/example/python/*.py $TARGET_DIR
-
 echo "Build End"
