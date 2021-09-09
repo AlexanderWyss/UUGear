@@ -39,7 +39,7 @@ typedef struct UUGearDevice UUGearDevice;
 
 extern void setShowLogs (int show);
 
-extern void setupUUGear ();
+extern void setupUUGear (char *dirPath);
 
 extern struct UUGearDevice attachUUGearDevice (char *id);
 

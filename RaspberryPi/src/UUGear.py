@@ -24,11 +24,11 @@
 #
 #######################################################################
 import os
-from ctypes import CDLL, Structure, POINTER, byref, c_char, c_int, c_float, c_char_p
+from ctypes import CDLL, Structure, POINTER, byref, c_char, c_int, c_float, c_char_p, create_string_buffer
 
 UUGEAR_ID_MAX_LENGTH = 1024
-
-uugearlib = CDLL(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'libUUGear.so'))
+dir_path = os.path.dirname(os.path.abspath(__file__))
+uugearlib = CDLL(os.path.join(dir_path, 'libUUGear.so'))
 
 
 class UUGearDeviceProfile(Structure):
@@ -101,7 +101,7 @@ class UUGearDevice(object):
         uugearlib.setShowLogs(show)
 
     def __init__(self, id):
-        uugearlib.setupUUGear()
+        uugearlib.setupUUGear(create_string_buffer(dir_path))
         self.devProfile = uugearlib.attachUUGearDevice(id)
 
     def isValid(self):

@@ -58,7 +58,7 @@ void printLog (char* fmt, ...)
 	}
 }
 
-void setupUUGear ()
+void setupUUGear (char *dirPath)
 {
 	mqd_t mq = mq_open (REQUEST_QUEUE_NAME, O_WRONLY);
 	if ((mqd_t)-1 == mq)
@@ -73,7 +73,7 @@ void setupUUGear ()
 				printLog ("Error to fork().\n");
 			break;
 			case 0:
-				execl ("./UUGearDaemon", "UUGearDaemon", (char *) 0);
+				execl (strcat(dirPath, "/UUGearDaemon"), "UUGearDaemon", (char *) 0);
 			break;
 			default:
 				fflush (NULL);
