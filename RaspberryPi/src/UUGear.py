@@ -101,7 +101,7 @@ class UUGearDevice(object):
         uugearlib.setShowLogs(show)
 
     def __init__(self, id):
-        uugearlib.setupUUGear(create_string_buffer(dir_path))
+        uugearlib.setupUUGear(create_string_buffer(dir_path.encode()))
         self.devProfile = uugearlib.attachUUGearDevice(id)
 
     def isValid(self):
