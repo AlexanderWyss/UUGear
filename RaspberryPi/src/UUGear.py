@@ -102,7 +102,7 @@ class UUGearDevice(object):
 
     def __init__(self, id):
         uugearlib.setupUUGear(create_string_buffer(dir_path.encode()))
-        self.devProfile = uugearlib.attachUUGearDevice(id)
+        self.devProfile = uugearlib.attachUUGearDevice(id.encode())
 
     def isValid(self):
         return self.devProfile != None and self.devProfile.fd != -1
